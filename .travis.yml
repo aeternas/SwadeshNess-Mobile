@@ -27,9 +27,10 @@ matrix:
         - travis_retry gem install xcpretty
         - travis_retry yarn
       script:
+        - /bin/bash --login -o pipefail
         - cd ios
         - bundle install
-        - set -o pipefail && gem install fastlane --no-rdoc --no-ri --no-document
+        - gem install fastlane --no-rdoc --no-ri --no-document
         - bundle exec pod install
         - cd ../node_modules/react-native/scripts
         - ./ios-install-third-party.sh
