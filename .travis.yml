@@ -29,7 +29,7 @@ matrix:
       script:
         - cd ios
         - bundle install
-        - set -eo pipefail && gem install fastlane --no-rdoc --no-ri --no-document --quiet
+        - set -o pipefail && gem install fastlane --no-rdoc --no-ri --no-document
         - bundle exec pod install
         - cd ../node_modules/react-native/scripts
         - ./ios-install-third-party.sh
