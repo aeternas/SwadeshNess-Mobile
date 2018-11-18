@@ -30,5 +30,4 @@ matrix:
       xcode_scheme: ios/SwadeshNessMobileTests
       script:
         - cd ios
-        - xcodebuild -scheme SwadeshNessMobile -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
-        - travis_retry xctool run-tests -scheme SwadeshNessMobile -sdk iphonesimulator -launch-timeout 90  ONLY_ACTIVE_ARCH=NO
+        - bundle exec fastlane test
