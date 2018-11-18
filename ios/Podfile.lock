@@ -1,0 +1,24 @@
+PODS:
+  - React (0.57.4):
+    - React/Core (= 0.57.4)
+  - React/Core (0.57.4):
+    - yoga (= 0.57.4.React)
+  - yoga (0.57.4.React)
+
+DEPENDENCIES:
+  - React (from `../node_modules/react-native`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+
+EXTERNAL SOURCES:
+  React:
+    :path: "../node_modules/react-native"
+  yoga:
+    :path: "../node_modules/react-native/ReactCommon/yoga"
+
+SPEC CHECKSUMS:
+  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
+  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
+
+PODFILE CHECKSUM: d81aa5f4098684c9c7a49325e4c9a2661bd51d66
+
+COCOAPODS: 1.6.0.beta.1

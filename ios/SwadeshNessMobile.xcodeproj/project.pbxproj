@@ -23,6 +23,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		1823C872D547C217870D6C50 /* libPods-SwadeshNessMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 182134760FD6BF4E4BCAECC0 /* libPods-SwadeshNessMobile.a */; };
 		2C3CCDDA21A191470009BE95 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2C3CCDD921A191470009BE95 /* Settings.bundle */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -38,7 +39,10 @@
 		2DCD954D1E0B4F2C00145EB5 /* SwadeshNessMobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SwadeshNessMobileTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		9B16757056A45F489B3DC18F /* libPods-SwadeshNessMobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BD47E708473B91EA8C550B /* libPods-SwadeshNessMobile-tvOSTests.a */; };
+		9B41CA9C60CF8DA741ED5BDC /* libPods-SwadeshNessMobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD523512A0EF31C7AB3042C8 /* libPods-SwadeshNessMobile-tvOS.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D7CFD99721F936A509521A9B /* libPods-SwadeshNessMobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76852E9181069CE56667C8BB /* libPods-SwadeshNessMobileTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -337,14 +341,26 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SwadeshNessMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SwadeshNessMobile/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		182134760FD6BF4E4BCAECC0 /* libPods-SwadeshNessMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwadeshNessMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C3CCDD921A191470009BE95 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = SwadeshNessMobile/Settings.bundle; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* SwadeshNessMobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwadeshNessMobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SwadeshNessMobile-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwadeshNessMobile-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		36D57014C1539F796D2D869A /* Pods-SwadeshNessMobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobile-tvOS/Pods-SwadeshNessMobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		49D3F2499CF5BF79293D953C /* Pods-SwadeshNessMobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobile-tvOSTests/Pods-SwadeshNessMobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		537C9DE8CC77F45E6F6A852D /* Pods-SwadeshNessMobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobile-tvOSTests/Pods-SwadeshNessMobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		566FE569FAE117B30DCFACA3 /* Pods-SwadeshNessMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobile.release.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobile/Pods-SwadeshNessMobile.release.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		679FEAAECFADDC4D740BF133 /* Pods-SwadeshNessMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobileTests.debug.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobileTests/Pods-SwadeshNessMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		76852E9181069CE56667C8BB /* libPods-SwadeshNessMobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwadeshNessMobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8F6090A7C249A03A801E3631 /* Pods-SwadeshNessMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobileTests.release.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobileTests/Pods-SwadeshNessMobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		A08BF3A7B329673E08E0B19B /* Pods-SwadeshNessMobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobile-tvOS/Pods-SwadeshNessMobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		A6BD47E708473B91EA8C550B /* libPods-SwadeshNessMobile-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwadeshNessMobile-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		C7DDA3E3DA4E1B7C0D305760 /* Pods-SwadeshNessMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwadeshNessMobile.debug.xcconfig"; path = "Target Support Files/Pods-SwadeshNessMobile/Pods-SwadeshNessMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		DD523512A0EF31C7AB3042C8 /* libPods-SwadeshNessMobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwadeshNessMobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				D7CFD99721F936A509521A9B /* libPods-SwadeshNessMobileTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +389,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				1823C872D547C217870D6C50 /* libPods-SwadeshNessMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +405,7 @@
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
+				9B41CA9C60CF8DA741ED5BDC /* libPods-SwadeshNessMobile-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
+				9B16757056A45F489B3DC18F /* libPods-SwadeshNessMobile-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,8 +542,28 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				182134760FD6BF4E4BCAECC0 /* libPods-SwadeshNessMobile.a */,
+				DD523512A0EF31C7AB3042C8 /* libPods-SwadeshNessMobile-tvOS.a */,
+				A6BD47E708473B91EA8C550B /* libPods-SwadeshNessMobile-tvOSTests.a */,
+				76852E9181069CE56667C8BB /* libPods-SwadeshNessMobileTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		496B6BCAAA10DA8D3D704BA0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7DDA3E3DA4E1B7C0D305760 /* Pods-SwadeshNessMobile.debug.xcconfig */,
+				566FE569FAE117B30DCFACA3 /* Pods-SwadeshNessMobile.release.xcconfig */,
+				A08BF3A7B329673E08E0B19B /* Pods-SwadeshNessMobile-tvOS.debug.xcconfig */,
+				36D57014C1539F796D2D869A /* Pods-SwadeshNessMobile-tvOS.release.xcconfig */,
+				49D3F2499CF5BF79293D953C /* Pods-SwadeshNessMobile-tvOSTests.debug.xcconfig */,
+				537C9DE8CC77F45E6F6A852D /* Pods-SwadeshNessMobile-tvOSTests.release.xcconfig */,
+				679FEAAECFADDC4D740BF133 /* Pods-SwadeshNessMobileTests.debug.xcconfig */,
+				8F6090A7C249A03A801E3631 /* Pods-SwadeshNessMobileTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -580,6 +620,7 @@
 				00E356EF1AD99517003FC87E /* SwadeshNessMobileTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				496B6BCAAA10DA8D3D704BA0 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -613,6 +654,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SwadeshNessMobileTests" */;
 			buildPhases = (
+				AE9FA27670C9417967BFE371 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -631,6 +673,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SwadeshNessMobile" */;
 			buildPhases = (
+				8701E19331E3DE3E2135EDDF /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -649,6 +692,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SwadeshNessMobile-tvOS" */;
 			buildPhases = (
+				9BBCFDB1569219E5F3FA5415 /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -667,6 +711,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SwadeshNessMobile-tvOSTests" */;
 			buildPhases = (
+				408461F8488C3BBF56476CEC /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -1105,6 +1150,94 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		408461F8488C3BBF56476CEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwadeshNessMobile-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8701E19331E3DE3E2135EDDF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwadeshNessMobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BBCFDB1569219E5F3FA5415 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwadeshNessMobile-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE9FA27670C9417967BFE371 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwadeshNessMobileTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1172,6 +1305,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 679FEAAECFADDC4D740BF133 /* Pods-SwadeshNessMobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1193,6 +1327,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F6090A7C249A03A801E3631 /* Pods-SwadeshNessMobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1211,6 +1346,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7DDA3E3DA4E1B7C0D305760 /* Pods-SwadeshNessMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1231,6 +1367,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 566FE569FAE117B30DCFACA3 /* Pods-SwadeshNessMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1250,6 +1387,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A08BF3A7B329673E08E0B19B /* Pods-SwadeshNessMobile-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1276,6 +1414,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36D57014C1539F796D2D869A /* Pods-SwadeshNessMobile-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1302,6 +1441,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49D3F2499CF5BF79293D953C /* Pods-SwadeshNessMobile-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1327,6 +1467,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 537C9DE8CC77F45E6F6A852D /* Pods-SwadeshNessMobile-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
