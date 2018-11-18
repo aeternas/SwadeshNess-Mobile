@@ -10,17 +10,17 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>Group</string>
+			<string>Developer Settings</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Name</string>
+			<string>Host</string>
 			<key>Key</key>
-			<string>name_preference</string>
+			<string>host_preference</string>
 			<key>DefaultValue</key>
-			<string></string>
+			<string>localhost</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -32,13 +32,21 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
+			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>Enabled</string>
+			<string>Port</string>
 			<key>Key</key>
-			<string>enabled_preference</string>
+			<string>port_preference</string>
 			<key>DefaultValue</key>
-			<true/>
+			<string>8081</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>Default</string>
 		</dict>
 		<dict>
 			<key>Type</key>
