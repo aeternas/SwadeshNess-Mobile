@@ -34,4 +34,4 @@ matrix:
         - cd ../node_modules/react-native/scripts
         - ./ios-configure-glog.sh
         - cd ../../../ios
-        - bundle exec fastlane test
+        - bundle exec fastlane test --capture_output
