@@ -28,7 +28,7 @@
   NSString *host = [[NSUserDefaults standardUserDefaults] stringForKey: @"host_preference"];
   NSString *port = [[NSUserDefaults standardUserDefaults] stringForKey: @"port_preference"];
 
-  NSString * urlString = [NSString stringWithFormat: @"http://%@:%@/index.ios.bundle?platform=ios&dev=true", host, port];
+  NSString * urlString = [NSString stringWithFormat: @"http://%@:%@/index.bundle?platform=ios&dev=true", host, port];
   jsCodeLocation = [NSURL URLWithString: urlString];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
