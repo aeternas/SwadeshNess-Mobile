@@ -1,33 +1,20 @@
 //  Ivan Golikov 2018
 
 import React, {Component} from 'react';
-import {Alert, NavigateIOS, StyleSheet, Button, View} from 'react-native';
+import {Alert, NavigatorIOS, StyleSheet, Button, View} from 'react-native';
+import {LaunchScene} from './scenes/LaunchScene.js';
 
 export default class App extends Component {
-  _onPressButton() {
-    Alert.alert('Should navigate to next screen');
-  }
-
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="Proceed to translation screen"
-          />
-        </View>
-      </View>
+      <NavigatorIOS
+        initialRoute={{
+          component: LaunchScene,
+          title: 'Welcome to SwadeshNess',
+          passProps: {index: 1},
+        }}
+        style={{flex: 1}}
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    margin: 20,
-  },
-});
