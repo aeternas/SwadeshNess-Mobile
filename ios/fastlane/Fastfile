@@ -22,4 +22,9 @@ platform :ios do
     build_app(scheme: "SwadeshNessMobile")
     upload_to_testflight
   end
+
+  lane :test do 
+    test 
+  end
+
 end
