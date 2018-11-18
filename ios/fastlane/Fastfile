@@ -24,7 +24,9 @@ platform :ios do
   end
 
   lane :test do 
-    scan
+    scan(
+      SwadeshNessMobileTests
+    )
   end
 
 end
