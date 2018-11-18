@@ -30,4 +30,5 @@ matrix:
         - cd ios
         - bundle install
         - gem install fastlane --no-rdoc --no-ri --no-document --quiet
+        - bundle exec pod install
         - bundle exec fastlane test
