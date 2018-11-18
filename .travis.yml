@@ -1,4 +1,4 @@
-language: bash
+language: node_js
 node_js:
   - "8.9.1"
 sudo: false
@@ -14,6 +14,7 @@ script:
   - npm run bundle:ios
 matrix:
   include:
+    - language: objective-c
       os: osx
       osx_image: xcode10
       node_js: false
