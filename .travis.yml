@@ -29,9 +29,10 @@ matrix:
       script:
         - cd ios
         - bundle install
-        - gem install fastlane --no-rdoc --no-ri --no-document --quiet
+        - set -eo pipefail && gem install fastlane --no-rdoc --no-ri --no-document --quiet
         - bundle exec pod install
         - cd ../node_modules/react-native/scripts
+        - ./ios-install-third-party.sh
         - ./ios-configure-glog.sh
         - cd ../../../ios
         - bundle exec fastlane test --capture_output
