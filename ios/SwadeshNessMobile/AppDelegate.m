@@ -23,13 +23,10 @@
 
   NSURL *jsCodeLocation;
 
-//  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-
   NSString *host = [[NSUserDefaults standardUserDefaults] stringForKey: @"host_preference"];
   NSString *port = [[NSUserDefaults standardUserDefaults] stringForKey: @"port_preference"];
-
-  NSString * urlString = [NSString stringWithFormat: @"http://%@:%@/index.bundle?platform=ios&dev=true", host, port];
-  jsCodeLocation = [NSURL URLWithString: urlString];
+//  jsCodeLocation = [NSURL URLWithString: [NSString stringWithFormat: @"http://%@:%@/index.bundle?platform=ios&dev=true", host, port]];
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"SwadeshNessMobile"
