@@ -32,6 +32,8 @@ matrix:
         - gem install fastlane --no-rdoc --no-ri --no-document --quiet
         - bundle exec pod install
         - cd ../node_modules/react-native/scripts
-        - ./ios-configure-glog.sh
-        - cd ../../../ios
+        - ./ios-install-third-party.sh
+        - cd ../node_modules/react-native/third-party/glog-0.3.5
+        - ../../scripts/ios-configure-glog.sh
+        - cd ../../../../ios
         - bundle exec fastlane test
