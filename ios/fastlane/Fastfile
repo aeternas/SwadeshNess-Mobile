@@ -48,9 +48,17 @@ platform :ios do
       keychain_password: ENV["MATCH_KEYCHAIN_PASSWORD"]
     )
 
-    scan(
-      scheme: "SwadeshNessMobile"
+    gym(
+      scheme: "SwadeshNessMobile",
+      clean: true,
+      project: "./SwadeshNessMobile.xcodeproj",
+      workspace: "./SwadeshNessMobile.xcworkspace", # since using pods
+      export_method: "development",
     )
+
+    #scan(
+    #  scheme: "SwadeshNessMobile"
+    #)
   end
 
 end
