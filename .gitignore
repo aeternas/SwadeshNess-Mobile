@@ -22,6 +22,9 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+# SSH
+bitbucket_swadeshness
+
 # Android/IntelliJ
 #
 build/
