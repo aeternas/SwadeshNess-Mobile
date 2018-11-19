@@ -51,7 +51,6 @@ platform :ios do
     gym(
       scheme: "SwadeshNessMobile",
       clean: true,
-      project: "./SwadeshNessMobile.xcodeproj",
       workspace: "./SwadeshNessMobile.xcworkspace", # since using pods
       export_method: "development",
     )
