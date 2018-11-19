@@ -27,10 +27,4 @@ matrix:
         - travis_retry gem install xcpretty
         - travis_retry yarn
       script:
-        - set -o pipefail && cd ios && bundle install && \
-          gem install fastlane --no-rdoc --no-ri --no-document && \
-          bundle exec pod install && \
-          cd ../node_modules/react-native/third-party/glog-0.3.5 && \
-          ./../../scripts/ios-configure-glog.sh && \
-          cd ../../../../ios && \
-          bundle exec fastlane test
+        - ./install.sh
