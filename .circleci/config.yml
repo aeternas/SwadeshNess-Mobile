@@ -166,7 +166,7 @@ workflows:
   version: 2
   node-ios:
     jobs:
-      - build:
+      - build
       - ios:
           requires:
             - build
