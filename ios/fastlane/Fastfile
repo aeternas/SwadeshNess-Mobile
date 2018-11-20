@@ -52,10 +52,10 @@ platform :ios do
   end
 
   lane :build do
+    xcversion(version: "9.4.1")
     perform_sign
     gym(
       scheme: "SwadeshNessMobile",
-      xcversion(version: "9.0"),
       clean: true,
       workspace: "./SwadeshNessMobile.xcworkspace", # since using pods
       export_method: "development",
