@@ -131,10 +131,6 @@ jobs:
       - run: *install-react-native-cli
       - save-cache: *save-react-native-cli
  
-      - restore-cache: *restore-fastlane
-      - run: *install-fastlane-ios
-      - save-cache: *save-fastlane
- 
       - restore-cache: *restore-yarn-cache
       - run: *yarn
       - save-cache: *save-yarn-cache
