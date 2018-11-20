@@ -67,10 +67,6 @@ aliases:
       brew install ruby
       brew cask install fastlane
    
-  - &install-fastlane-android
-    name: Install fastlane
-    command: gem install fastlane
- 
   - &yarn
     name: Install Node Dependencies
     command: |
@@ -131,10 +127,6 @@ jobs:
       - restore-cache: *restore-react-native-cli
       - run: *install-react-native-cli
       - save-cache: *save-react-native-cli
- 
-      - restore-cache: *restore-fastlane
-      - run: *install-fastlane-ios
-      - save-cache: *save-fastlane
  
       - restore-cache: *restore-yarn-cache
       - run: *yarn
