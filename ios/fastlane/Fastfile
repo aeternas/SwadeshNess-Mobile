@@ -58,7 +58,7 @@ platform :ios do
       scheme: "SwadeshNessMobile",
       workspace: "./SwadeshNessMobile.xcworkspace", # since using pods
       export_method: "app-store",
-      configuration: "Production",
+      configuration: "Release",
       export_options: {
         provisioningProfiles: { 
             "jp.ivan.SwadeshNessMobile" => "match AppStore jp.ivan.SwadeshNessMobile"
