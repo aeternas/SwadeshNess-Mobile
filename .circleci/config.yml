@@ -167,14 +167,6 @@ workflows:
   node-ios:
     jobs:
       - build:
-          filters:
-            branches:
-              only:
-                - development
       - ios:
           requires:
             - build
-          filters:
-            branches:
-              only:
-                - development
