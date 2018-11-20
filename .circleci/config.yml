@@ -89,7 +89,7 @@ aliases:
     name: Install CocoaPods
     command: |
       cd ios
-      bundle exec pod update
+      bundle exec pod install
  
 version: 2
 jobs:
@@ -145,10 +145,6 @@ jobs:
       - save-cache: *save-cocoapods
  
       - run:
-          name: version patch
-          command: npm version patch
- 
-      - run:
           name: Create a main.jsbundle
           command: node ./node_modules/react-native-cli/index.js bundle --dev false --platform ios --entry-file ./index.js --bundle-output ./ios/main.jsbundle
  
@@ -156,7 +152,7 @@ jobs:
           name: Build and Signing
           command: |
             cd ios
-            bundle exec fastlane beta_circleci
+            bundle exec fastlane test
  
 workflows:
   version: 2
