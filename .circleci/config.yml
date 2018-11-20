@@ -82,7 +82,6 @@ aliases:
     command: |
       cd ios
       bundle update
-      gem install json
       bundle install --path vendor/bundle
  
   - &install-cocoapods
