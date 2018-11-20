@@ -1,0 +1,180 @@
+aliases:
+  # Cache Management
+  - &restore-yarn-cache
+    keys:
+      - yarn-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+      # Fallback in case checksum fails
+      - yarn-{{ arch }}-{{ .Branch }}-
+      # Fallback in case this is a first-time run on a fork
+      - yarn-{{ arch }}-master-
+  - &save-yarn-cache
+    paths:
+      - node_modules
+      - ~/.cache/yarn
+    key: yarn-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
+ 
+  - &restore-react-native-cli
+    keys:
+      - react-native-cli-{{ arch }}
+  - &save-react-native-cli
+    paths:
+      - node_modules
+    key: react-native-cli-{{ arch }}
+ 
+  - &restore-fastlane
+    keys:
+      - fastlane-{{ arch }}
+  - &save-fastlane
+    paths:
+      - ~/.fastlane
+    key: fastlane-{{ arch }}
+ 
+  - &restore-gem-ios
+    keys:
+      - gem-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Gemfile.lock" }}
+      # Fallback in case checksum fails
+      - gem-{{ arch }}-{{ .Branch }}-
+      # Fallback in case this is a first-time run on a fork
+      - gem-{{ arch }}-master-
+  - &save-gem-ios
+    paths:
+      - ios/vendor/bundle
+    key: gem-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Gemfile.lock" }}
+ 
+  - &restore-cocoapods
+    keys:
+      - cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+      # Fallback in case checksum fails
+      - cocoapods-{{ arch }}-{{ .Branch }}-
+      # Fallback in case this is a first-time run on a fork
+      - cocoapods-{{ arch }}-master-
+  - &save-cocoapods
+    paths:
+      - ~/.cocoapods
+      - ios/Pods
+    key: cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+ 
+ 
+  # Dependency Management
+  - &install-react-native-cli
+    name: Install react-native-cli
+    command: npm install react-native-cli
+ 
+  - &install-fastlane-ios
+    name: Install fastlane
+    command: |
+      brew update
+      brew install ruby
+      brew cask install fastlane
+   
+  - &install-fastlane-android
+    name: Install fastlane
+    command: gem install fastlane
+ 
+  - &yarn
+    name: Install Node Dependencies
+    command: |
+      # rm -rf node_modules
+      yarn install --non-interactive --cache-folder ~/.cache/yarn
+  
+  - &install-gem-ios
+    name: Install Gemfile
+    command: |
+      cd ios
+      bundle update
+      gem install json
+      bundle install --path vendor/bundle
+ 
+  - &install-cocoapods
+    name: Install CocoaPods
+    command: |
+      cd ios
+      bundle exec pod update
+ 
+version: 2
+jobs:
+  build:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:8
+ 
+    steps:
+      - checkout
+ 
+      - restore-cache: *restore-yarn-cache
+      - run: *yarn
+      - save-cache: *save-yarn-cache
+ 
+      - run:
+          name: Run unit tests
+          command: yarn test
+ 
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - node_modules
+      - store_test_results:
+          path: ~/project/junit.xml
+ 
+  ios:
+    macos:
+      xcode: "9.0"
+    working_directory: ~/project
+    environment:
+      FL_OUTPUT_DIR: ~/project/output
+    shell: /bin/bash --login -o pipefail
+    steps:
+      - checkout:
+          path: ~/project
+      # Not using a workspace here as Node and Yarn versions
+      # differ between the macOS image and the Docker containers above.
+      - restore-cache: *restore-react-native-cli
+      - run: *install-react-native-cli
+      - save-cache: *save-react-native-cli
+ 
+      - restore-cache: *restore-fastlane
+      - run: *install-fastlane-ios
+      - save-cache: *save-fastlane
+ 
+      - restore-cache: *restore-yarn-cache
+      - run: *yarn
+      - save-cache: *save-yarn-cache
+ 
+      - restore-cache: *restore-gem-ios
+      - run: *install-gem-ios
+      - save-cache: *save-gem-ios
+ 
+      - restore-cache: *restore-cocoapods
+      - run: *install-cocoapods
+      - save-cache: *save-cocoapods
+ 
+      - run:
+          name: version patch
+          command: npm version patch
+ 
+      - run:
+          name: Create a main.jsbundle
+          command: node ./node_modules/react-native-cli/index.js bundle --dev false --platform ios --entry-file ./index.js --bundle-output ./ios/main.jsbundle
+ 
+      - run:
+          name: Build and Signing
+          command: |
+            cd ios
+            bundle exec fastlane beta_circleci
+ 
+workflows:
+  version: 2
+  node-ios:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - development
+      - ios:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - development
