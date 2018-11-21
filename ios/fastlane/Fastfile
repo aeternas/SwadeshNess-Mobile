@@ -32,7 +32,8 @@ def perform_sign
     #)
     match(
       app_identifier: "jp.ivan.SwadeshNessMobile",
-      type: "appstore"
+      type: "appstore",
+      readonly: true
     )
 end
 
