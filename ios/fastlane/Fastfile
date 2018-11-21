@@ -25,6 +25,20 @@ def setup_codesigning
     )
 end
 
+def build_sign
+  gym(
+    scheme: "SwadeshNessMobile",
+    clean: true,
+    export_method: "app-store"
+  )
+end
+
+def test
+  scan(
+    scheme: "SwadeshNessMobile"
+  )
+end
+
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
@@ -33,29 +47,15 @@ platform :ios do
     upload_to_testflight
   end
 
-  lane :build do
+  lane :buildtest do
     ci_setup_keychain
     setup_codesigning
-    
-    gym(
-      scheme: "SwadeshNessMobile",
-      clean: true,
-      export_method: "app-store"
-    )
-  end
-
+    test
+    build_sign
+  end  
+  
   lane :localbuild do
     swadeshness_match
-    gym(
-      scheme: "SwadeshNessMobile",
-      clean: true,
-      export_method: "app-store"
-    )
-  end
-
-  lane :test do 
-    scan(
-      scheme: "SwadeshNessMobile"
-    )
+    build_sign
   end
 end

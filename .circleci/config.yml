@@ -149,7 +149,7 @@ jobs:
           name: Build and Signing
           command: |
             cd ios
-            bundle exec fastlane build
+            bundle exec fastlane buildtest
  
 workflows:
   version: 2
