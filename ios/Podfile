@@ -1,28 +1,19 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 
 target 'SwadeshNessMobile' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
   rn_path = '../node_modules/react-native'
   pod 'yoga', path: "#{rn_path}/ReactCommon/yoga/yoga.podspec"
   pod 'React', path: rn_path, subspecs: [
     'Core',
     'CxxBridge'
   ]
+  
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'  
-#  pod 'RNDeviceInfo', path: '../node_modules/react-native-device-info'
-  # Pods for SwadeshNessMobile
-
-#  target 'SwadeshNessMobile-tvOSTests' do
-#   inherit! :search_paths
-#  end
 
   target 'SwadeshNessMobileTests' do
     inherit! :search_paths
-    # Pods for testing
   end
 
 end
