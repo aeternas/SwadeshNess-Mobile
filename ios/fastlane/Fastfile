@@ -32,8 +32,7 @@ def perform_sign
     )
     match(
       app_identifier: "jp.ivan.SwadeshNessMobile",
-      type: "appstore",
-      readonly: true
+      type: "development"
     )
 end
 
@@ -48,19 +47,13 @@ platform :ios do
   end
 
   lane :build do
-    xcversion(version: "9.4.1")
+    xcversion(version: "10.1")
     perform_sign
     gym(
-      scheme: "SwadeshNessMobile",
+      scheme: "SwadeshNessMobile"
       #workspace: "./SwadeshNessMobile.xcworkspace", # since using pods
       #export_method: "app-store",
       #configuration: "Release",
-      clean: "true",
-      export_options: {
-        provisioningProfiles: { 
-            "jp.ivan.SwadeshNessMobile" => "match AppStore jp.ivan.SwadeshNessMobile"
-        }
-      }
     )
   end
 

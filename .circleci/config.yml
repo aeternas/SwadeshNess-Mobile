@@ -118,7 +118,7 @@ jobs:
  
   ios:
     macos:
-      xcode: "9.4.1"
+      xcode: "10.1"
     working_directory: ~/project
     environment:
       FL_OUTPUT_DIR: ~/project/output
