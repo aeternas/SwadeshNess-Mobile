@@ -16,28 +16,29 @@
 default_platform(:ios)
 
 def perform_sign
-    create_keychain(
-      name: ENV["MATCH_KEYCHAIN_NAME"],
-      password: ENV["MATCH_KEYCHAIN_PASSWORD"],
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      add_to_search_list: true
-    )
+  create_keychain(
+    name: ENV["MATCH_KEYCHAIN_NAME"],
+    password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    add_to_search_list: true
+  )
 
-    unlock_keychain(
-      path: ENV["MATCH_KEYCHAIN_NAME"],
-      add_to_search_list: :replace,
-      password: ENV['MATCH_KEYCHAIN_PASSWORD']
-    )
-    match(
+  unlock_keychain(
+    path: ENV["MATCH_KEYCHAIN_NAME"],
+    add_to_search_list: :replace,
+    password: ENV['MATCH_KEYCHAIN_PASSWORD']
+  )
+end
+
+def swadeshness_match
+  match(
       app_identifier: "jp.ivan.SwadeshNessMobile",
-      type: "development",
+      type: "appstore",
       readonly: true
     )
 end
-
-
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
@@ -48,13 +49,22 @@ platform :ios do
   end
 
   lane :build do
-    xcversion(version: "10.1")
     perform_sign
+    swadeshness_match
     gym(
-      scheme: "SwadeshNessMobile"
+      scheme: "SwadeshNessMobile",
       #workspace: "./SwadeshNessMobile.xcworkspace", # since using pods
       #export_method: "app-store",
       #configuration: "Release",
+    )
+  end
+
+  lane :localbuild do
+    swadeshness_match
+    gym(
+      scheme: "SwadeshNessMobile",
+      clean: true,
+      export_method: "app-store"
     )
   end
 
