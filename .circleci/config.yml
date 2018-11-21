@@ -82,7 +82,6 @@ aliases:
     command: |
       echo "ruby-2.4" > ~/.ruby-version
       cd ios
-      bundle update
       bundle install --path vendor/bundle
  
   - &install-cocoapods
