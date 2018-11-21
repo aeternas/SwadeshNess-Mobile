@@ -16,20 +16,20 @@
 default_platform(:ios)
 
 def perform_sign
-    #create_keychain(
-    #  name: ENV["MATCH_KEYCHAIN_NAME"],
-    #  password: ENV["MATCH_KEYCHAIN_PASSWORD"],
-    #  default_keychain: true,
-    #  unlock: true,
-    #  timeout: 3600,
-    #  add_to_search_list: true
-    #)
+    create_keychain(
+      name: ENV["MATCH_KEYCHAIN_NAME"],
+      password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
+    )
 
-    #unlock_keychain(
-    #  path: ENV["MATCH_KEYCHAIN_NAME"],
-    #  add_to_search_list: :replace,
-    #  password: ENV['MATCH_KEYCHAIN_PASSWORD']
-    #)
+    unlock_keychain(
+      path: ENV["MATCH_KEYCHAIN_NAME"],
+      add_to_search_list: :replace,
+      password: ENV['MATCH_KEYCHAIN_PASSWORD']
+    )
     match(
       app_identifier: "jp.ivan.SwadeshNessMobile",
       type: "appstore",
