@@ -43,8 +43,12 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
-    build_app(scheme: "SwadeshNessMobile")
+    ci_setup_keychain
+    setup_codesigning
+    test
+    build_sign
     upload_to_testflight
+    push_to_git_remote
   end
 
   lane :buildtest do
