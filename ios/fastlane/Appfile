@@ -1,5 +1,5 @@
-app_identifier("jp.ivan.SwadeshNessMobile") # The bundle identifier of your app
-apple_id(ENV["APPLE_ID"]) # Your Apple email address
+app_identifier("jp.ivan.SwadeshNessMobile")
+apple_id(ENV["APPLE_ID"])
 
-itc_team_id("117495597") # App Store Connect Team ID
-team_id("WZ27824WW9") # Developer Portal Team ID
+itc_team_id("117495597")
+team_id("WZ27824WW9")
