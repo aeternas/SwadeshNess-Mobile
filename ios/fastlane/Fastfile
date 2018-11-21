@@ -53,6 +53,8 @@ platform :ios do
     swadeshness_match
     gym(
       scheme: "SwadeshNessMobile",
+      clean: true,
+      export_method: "app-store"
       #workspace: "./SwadeshNessMobile.xcworkspace", # since using pods
       #export_method: "app-store",
       #configuration: "Release",
