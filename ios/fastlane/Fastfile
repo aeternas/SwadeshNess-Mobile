@@ -39,12 +39,15 @@ def test
   )
 end
 
+def push_bumped_version
+  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]' && git push origin head:#{ENV['BRANCH_NAME']} --tags")
+end
+
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
-    sh("git status && git checkout -- ../../package-lock.json")
-    push_to_git_remote
+    push_bumped_version
     ci_setup_keychain
     setup_codesigning
     test
