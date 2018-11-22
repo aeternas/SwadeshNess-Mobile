@@ -64,8 +64,10 @@ platform :ios do
     build_sign
   end  
 
-  lane :testonly do
-    test
+  lane :test_build_only do
+    test(
+      build_for_testing: true
+    )
   end  
 
   lane :localbuild do

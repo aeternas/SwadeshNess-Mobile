@@ -36,4 +36,4 @@ matrix:
         - cd third-party/glog-0.3.5
         - pwd && ../../ios-configure-glog.sh
         - pwd && cd ../../../../../ios
-        - bundle exec fastlane testonly
+        - bundle exec fastlane test_build_only
