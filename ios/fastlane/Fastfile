@@ -47,16 +47,15 @@ platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
     ci_setup_keychain
-    sh("ls -lia ~/.ssh/")
-#    increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
-#    push_bumped_version
+    increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
+    push_bumped_version
     setup_codesigning
     test
     build_sign
     sh("git status")
-    #upload_to_testflight(
-    #  skip_waiting_for_build_processing: true
-    #)
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
   end
 
   lane :buildtest do
