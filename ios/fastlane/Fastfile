@@ -47,7 +47,9 @@ platform :ios do
     setup_codesigning
     test
     build_sign
-    upload_to_testflight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
     push_to_git_remote
   end
 
