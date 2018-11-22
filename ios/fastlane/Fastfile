@@ -52,7 +52,6 @@ platform :ios do
     setup_codesigning
     test
     build_sign
-    sh("git status")
     upload_to_testflight(
       skip_waiting_for_build_processing: true
     )
