@@ -65,7 +65,7 @@ platform :ios do
   end  
 
   lane :test_build_only do
-    test(
+    scan(
       build_for_testing: true
     )
   end  
