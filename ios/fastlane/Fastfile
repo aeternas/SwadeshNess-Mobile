@@ -66,6 +66,7 @@ platform :ios do
 
   lane :test_build_only do
     scan(
+      scheme: "SwadeshNessMobile",
       build_for_testing: true
     )
   end  
