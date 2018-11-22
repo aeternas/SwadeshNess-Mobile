@@ -63,7 +63,11 @@ platform :ios do
     test
     build_sign
   end  
-  
+
+  lane :testonly do
+    test
+  end  
+
   lane :localbuild do
     swadeshness_match
     build_sign

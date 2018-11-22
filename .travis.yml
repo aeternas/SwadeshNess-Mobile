@@ -19,10 +19,6 @@ matrix:
       osx_image: xcode10
       node_js: false
       before_install:
-        - openssl aes-256-cbc -K $encrypted_8a62bc148fe6_key -iv $encrypted_8a62bc148fe6_iv -in bitbucket_swadeshness.enc -out ~\/.ssh/bitbucket_swadeshness -d
-          #- echo -e "Host bitbucket.org\n\tHostName bitbucket.org\n\tUser git\n\tIdentityFile ~/.ssh/bitbucket_swadeshness\n" >> ~/.ssh/config
-          #- ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
-          #- chmod 600 ~/.ssh/bitbucket_swadeshness
         - nvm install 8
         - node --version
         - travis_retry npm install -g yarn
@@ -30,14 +26,14 @@ matrix:
       install:
         - travis_retry gem install xcpretty
         - travis_retry yarn
+        - npm install react-native-cli
       script:
         - cd ios
         - bundle install
-        - gem install fastlane --no-rdoc --no-ri --no-document --quiet
         - bundle exec pod install
         - cd ../node_modules/react-native/scripts
         - ./ios-install-third-party.sh
         - cd third-party/glog-0.3.5
         - pwd && ../../ios-configure-glog.sh
         - pwd && cd ../../../../../ios
-        - bundle exec fastlane test
+        - bundle exec fastlane testonly
