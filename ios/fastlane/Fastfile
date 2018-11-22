@@ -47,15 +47,16 @@ end
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
-    push_bumped_version
+#    increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
+#    push_bumped_version
     ci_setup_keychain
     setup_codesigning
     test
     build_sign
-    upload_to_testflight(
-      skip_waiting_for_build_processing: true
-    )
+    sh("git status")
+    #upload_to_testflight(
+    #  skip_waiting_for_build_processing: true
+    #)
   end
 
   lane :buildtest do
