@@ -20,7 +20,8 @@ end
 def setup_codesigning
   match(
       app_identifier: "jp.ivan.SwadeshNessMobile",
-      type: "appstore"
+      type: "appstore",
+      verbose: true
     )
 end
 
