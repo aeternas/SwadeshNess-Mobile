@@ -41,7 +41,7 @@ end
 
 def push_bumped_version
   sh("fastlane env")
-  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]' && git push origin head:#{ENV['BRANCH']} --tags")
+  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]' && git push origin head:#{ENV['CUSTOM_PUSH_BRANCH']} --tags")
 end
 
 platform :ios do
