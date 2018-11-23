@@ -21,7 +21,6 @@ export class LaunchScene extends React.Component {
     this.props.navigator.push({
       component: TranslationScene,
       title: 'Translation',
-      passProps: {index: 1},
     });
   }
 
