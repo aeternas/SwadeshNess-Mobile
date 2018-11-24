@@ -4,7 +4,7 @@ module.exports = function(api) {
     [
       'transform-inline-environment-variables',
       {
-        include: ['BASE_URL'],
+        include: ['BASE_URL', 'PROD_BASE_URL'],
       },
     ],
   ];
