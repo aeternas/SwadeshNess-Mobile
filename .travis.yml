@@ -8,8 +8,6 @@ cache:
     - $HOME/.yarn-cache
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-    - $HOME/.cocoapods
-    - $HOME/aeternas/SwadeshNess-Mobile/ios/Pods
 script:
   - cp env.example.js env.js
   - npm run lint
@@ -18,6 +16,12 @@ script:
 matrix:
   include:
     - language: objective-c
+      cache: 
+        - bundler
+        - cocoapods
+        - $HOME/.yarn-cache
+        - $HOME/.gradle/caches/
+        - $HOME/.gradle/wrapper/
       os: osx
       osx_image: xcode10
       node_js: false
