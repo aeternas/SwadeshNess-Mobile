@@ -1,1 +1,2 @@
 extends: airbnb
+eslint.packageManager: yarn
