@@ -39,8 +39,12 @@ def test
   )
 end
 
+def commit_bumped_version
+  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]'
+end
+
 def push_bumped_version
-  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]' && git push origin head:#{ENV['CUSTOM_PUSH_BRANCH']} --tags")
+  git push origin head:#{ENV['CUSTOM_PUSH_BRANCH']} --tags")
 end
 
 platform :ios do
@@ -48,13 +52,14 @@ platform :ios do
   lane :beta do
     ci_setup_keychain
     increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
-    push_bumped_version
+    commit_bumped_version
     setup_codesigning
     test
     build_sign
     upload_to_testflight(
       skip_waiting_for_build_processing: true
     )
+    push_bumped_version
   end
 
   lane :buildtest do
