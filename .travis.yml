@@ -9,7 +9,7 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.cocoapods
-    - $HOME/aeternas/SwadeshNess-Mobile/Pods
+    - $HOME/aeternas/SwadeshNess-Mobile/ios/Pods
 script:
   - cp env.example.js env.js
   - npm run lint
