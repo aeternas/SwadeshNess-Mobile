@@ -31,9 +31,4 @@ matrix:
         - cd ios
         - bundle install
         - bundle exec pod install
-        - cd ../node_modules/react-native/scripts
-        - ./ios-install-third-party.sh
-        - cd third-party/glog-0.3.5
-        - pwd && ../../ios-configure-glog.sh
-        - pwd && cd ../../../../../ios
         - bundle exec fastlane test_build_only
