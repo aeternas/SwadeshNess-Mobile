@@ -40,11 +40,11 @@ def test
 end
 
 def commit_bumped_version
-  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]'
+  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]")
 end
 
 def push_bumped_version
-  git push origin head:#{ENV['CUSTOM_PUSH_BRANCH']} --tags")
+  sh("git push origin head:#{ENV['CUSTOM_PUSH_BRANCH']} --tags")
 end
 
 platform :ios do
@@ -62,6 +62,7 @@ platform :ios do
     push_bumped_version
   end
 
+  desc "Test and build"
   lane :buildtest do
     ci_setup_keychain
     setup_codesigning
@@ -69,6 +70,7 @@ platform :ios do
     build_sign
   end  
 
+  desc "Just run tests"
   lane :test_build_only do
     scan(
       scheme: "SwadeshNessMobile",
@@ -76,6 +78,7 @@ platform :ios do
     )
   end  
 
+  desc "Build locally"
   lane :localbuild do
     swadeshness_match
     build_sign
