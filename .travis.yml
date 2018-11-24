@@ -21,12 +21,12 @@ matrix:
       before_install:
         - nvm install 8
         - node --version
-        - travis_retry npm install -g yarn
+        - travis_retry yarn install
         - yarn -version
       install:
         - travis_retry gem install xcpretty
         - travis_retry yarn
-        - npm install react-native-cli
+        - yarn add react-native-cli
       script:
         - cd ios
         - bundle install
