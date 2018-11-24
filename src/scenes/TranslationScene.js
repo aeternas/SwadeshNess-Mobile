@@ -3,6 +3,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, TextInput, Button, ScrollView} from 'react-native';
+import {TranslationService} from '../services/TranslationService.js';
 
 export class TranslationScene extends React.Component {
   static propTypes = {
@@ -10,8 +11,14 @@ export class TranslationScene extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.state = {translationResult: ''};
     this.service = new TranslationService();
   }
+
+  translate = () => {
+    this.service.translate('smth');
+  };
+
   render() {
     return (
       <ScrollView scrollEnabled={false}>

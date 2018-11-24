@@ -1,7 +1,10 @@
 class TranslationService {
+  constructor(props) {
+    this.baseURL = '';
+  }
   translate(string) {
     return fetch(
-      'https://vpered.su:8080/dev/?translate' + string + '&group=turkic',
+      'https://' + baseURL + '/v1/?translate=' + string + '&group=turkic',
     )
       .then(response => response.json())
       .then(responseJson => {
@@ -12,3 +15,5 @@ class TranslationService {
       });
   }
 }
+
+export {TranslationService};
