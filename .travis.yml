@@ -1,4 +1,3 @@
-- &create-main-jsbundle: node ../node_modules/react-native-cli/index.js bundle --dev false --platform ios --entry-file ../index.js --bundle-output main.jsbundle
 
 language: node_js
 node_js:
@@ -35,5 +34,5 @@ matrix:
         - cd ios
         - bundle install
         - bundle exec pod install
-        - *create-main-jsbundle
+        - node ../node_modules/react-native-cli/index.js bundle --dev false --platform ios --entry-file ../index.js --bundle-output main.jsbundle
         - bundle exec fastlane test_build_only
