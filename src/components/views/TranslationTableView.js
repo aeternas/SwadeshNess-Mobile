@@ -4,13 +4,12 @@ import {AppRegistry, SectionList, StyleSheet, Text, View} from 'react-native';
 class TranslationTableView extends Component {
   constructor(props) {
     super(props);
-    this.state = {sections: []};
   }
   render() {
     return (
       <View style={styles.container}>
         <SectionList
-          sections={this.state.sections}
+          sections={this.props.translationSections}
           renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
           renderSectionHeader={({section}) => (
             <Text style={styles.sectionHeader}>{section.title}</Text>

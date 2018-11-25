@@ -21,29 +21,35 @@ export class TranslationScene extends React.Component {
 
   translate(parameters) {
     this.service.translate(parameters, cb => {
-      console.error(cb);
+      this.setState({
+        translationResult: cb.map((value, index, array) => {
+          return {
+            title: value.name,
+            data: value.results.map(result => {
+              return result.name + ' - ' + result.translation;
+            }),
+          };
+        }),
+      });
     });
   }
 
   render() {
     return (
       <ScrollView scrollEnabled={false}>
-        <View style={{padding: 10}}>
-          <TextInput
-            style={{height: 40}}
-            textAlign="center"
-            placeholder="Type here to translate!"
-            onChangeText={text => this.setState({textToTranslate: text})}
-          />
-          <Button
-            title="Translate!"
-            onPress={() => this.translate(this.state.textToTranslate)}
-          />
-        </View>
-        <TranslationTableView />
-        <View>
-          <Text>{this.state.translationResult}</Text>
-        </View>
+        <TextInput
+          style={{height: 40}}
+          textAlign="center"
+          placeholder="Type here to translate!"
+          onChangeText={text => this.setState({textToTranslate: text})}
+        />
+        <Button
+          title="Translate!"
+          onPress={() => this.translate(this.state.textToTranslate)}
+        />
+        <TranslationTableView
+          translationSections={this.state.translationResult}
+        />
       </ScrollView>
     );
   }
