@@ -40,7 +40,7 @@ def test
 end
 
 def commit_bumped_version
-  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump [ci skip]'")
+  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump to #{get_build_number} [ci skip]'")
 end
 
 def push_bumped_version
