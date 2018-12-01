@@ -15,6 +15,17 @@ class TranslationService {
         console.error(error);
       });
   }
+
+  getGroups(cb) {
+    fetch('https://' + process.env['BASE_URL'] + '/v1/groups')
+      .then(response => response.json())
+      .then(responseJson => {
+        cb(responseJson);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 }
 
 export {TranslationService};

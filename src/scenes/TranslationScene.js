@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {View, TextInput, Button, ScrollView, Text} from 'react-native';
 import {TranslationService} from '../services/TranslationService.js';
 import {TranslationTableView} from '../components/views/TranslationTableView.js';
+import {RoundedButtonStack} from '../components/views/RoundedButtonStack.js';
 
 export class TranslationScene extends React.Component {
   static propTypes = {
@@ -15,8 +16,23 @@ export class TranslationScene extends React.Component {
     this.state = {
       textToTranslate: '',
       translationResult: [],
+      groups: [],
     };
     this.service = new TranslationService();
+  }
+
+  componentDidMount() {
+    this.getGroups();
+  }
+
+  getGroups() {
+    this.service.getGroups(groupsResponse => {
+      this.setState({
+        groups: groupsResonse.map(group => {
+          return group.name;
+        }),
+      });
+    });
   }
 
   translate(parameters) {
@@ -50,6 +66,7 @@ export class TranslationScene extends React.Component {
         <TranslationTableView
           translationSections={this.state.translationResult}
         />
+        <RoundedButtonStack groups={this.state.groups} />
       </ScrollView>
     );
   }
