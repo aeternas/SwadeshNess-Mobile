@@ -18,6 +18,7 @@ class TranslationScene extends React.Component {
       textToTranslate: '',
       translationResult: [],
       groups: [],
+      selectedGroup: '',
     };
     this.service = new TranslationService();
   }
@@ -56,13 +57,16 @@ class TranslationScene extends React.Component {
     if (this.state.isLoading) {
       return <View />;
     } else {
-      return <RoundedButtonStack groups={this.state.groups} />;
+      return (
+        <RoundedButtonStack style={{flex: 1}} groups={this.state.groups} />
+      );
     }
   }
 
   render() {
     return (
       <ScrollView scrollEnabled={false}>
+        {this.renderGroups()}
         <TextInput
           style={{height: 40}}
           textAlign="center"
@@ -76,7 +80,6 @@ class TranslationScene extends React.Component {
         <TranslationTableView
           translationSections={this.state.translationResult}
         />
-        {this.renderGroups()}
       </ScrollView>
     );
   }
