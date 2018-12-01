@@ -7,13 +7,14 @@ import {TranslationService} from '../services/TranslationService.js';
 import {TranslationTableView} from '../components/views/TranslationTableView.js';
 import {RoundedButtonStack} from '../components/views/RoundedButtonStack.js';
 
-export class TranslationScene extends React.Component {
+class TranslationScene extends React.Component {
   static propTypes = {
     navigator: PropTypes.object.isRequired,
   };
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       textToTranslate: '',
       translationResult: [],
       groups: [],
@@ -28,7 +29,8 @@ export class TranslationScene extends React.Component {
   getGroups() {
     this.service.getGroups(groupsResponse => {
       this.setState({
-        groups: groupsResonse.map(group => {
+        isLoading: false,
+        groups: groupsResponse.map(group => {
           return group.name;
         }),
       });
@@ -50,6 +52,14 @@ export class TranslationScene extends React.Component {
     });
   }
 
+  renderGroups() {
+    if (this.state.isLoading) {
+      return <View />;
+    } else {
+      return <RoundedButtonStack groups={this.state.groups} />;
+    }
+  }
+
   render() {
     return (
       <ScrollView scrollEnabled={false}>
@@ -66,8 +76,10 @@ export class TranslationScene extends React.Component {
         <TranslationTableView
           translationSections={this.state.translationResult}
         />
-        <RoundedButtonStack groups={this.state.groups} />
+        {this.renderGroups()}
       </ScrollView>
     );
   }
 }
+
+export {TranslationScene};

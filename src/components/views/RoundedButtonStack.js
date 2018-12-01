@@ -1,10 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
+import {SmallRoundedButton} from './SmallRoundedButton.js';
 
 class RoundedButtonStack extends React.Component {
   render() {
     return this.props.groups.map((value, index, array) => {
-      <Text>value</Text>;
+      <SmallRoundedButton key={index} title={value} />;
     });
   }
 }
