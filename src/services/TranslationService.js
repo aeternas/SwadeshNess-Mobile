@@ -1,11 +1,12 @@
 class TranslationService {
-  translate(word, cb) {
+  translate(parameters, cb) {
     fetch(
       'https://' +
         process.env['BASE_URL'] +
         '/v1/?translate=' +
-        word +
-        '&group=turkic',
+        parameters.word +
+        '&group=' +
+        parameters.group,
     )
       .then(response => response.json())
       .then(responseJson => {
