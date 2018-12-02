@@ -65,19 +65,23 @@ class TranslationScene extends React.Component {
     if (this.state.isLoading) {
       return <View />;
     } else {
-      return this.state.groups.map((languageGroup, index, array) => {
-        return (
-          <Switch
-            style={({flexDirection: 'row'}, {flex: 1}, {height: 50})}
-            key={index}
-            onValueChange={value =>
-              this.setState({selectedGroup: languageGroup})
-            }
-            value={languageGroup == this.state.selectedGroup}>
-            <Text style={{left: 70}}>{languageGroup}</Text>
-          </Switch>
-        );
-      });
+      return (
+        <ScrollView>
+          {this.state.groups.map((languageGroup, index, array) => {
+            return (
+              <Switch
+                style={({flexDirection: 'row'}, {flex: 1}, {height: 50})}
+                key={index}
+                onValueChange={value =>
+                  this.setState({selectedGroup: languageGroup})
+                }
+                value={languageGroup == this.state.selectedGroup}>
+                <Text style={{left: 70}}>{languageGroup}</Text>
+              </Switch>
+            );
+          })}
+        </ScrollView>
+      );
     }
   }
 
