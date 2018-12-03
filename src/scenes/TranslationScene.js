@@ -18,7 +18,7 @@ class TranslationScene extends React.Component {
       textToTranslate: '',
       translationResult: [],
       groups: [],
-      selectedGroup: '',
+      selectedGroups: [],
     };
     this.service = new TranslationService();
   }
@@ -56,7 +56,7 @@ class TranslationScene extends React.Component {
   getTranslationRequest() {
     var request = {
       word: this.state.textToTranslate,
-      group: this.state.selectedGroup,
+      groups: this.state.selectedGroups,
     };
     return request;
   }
@@ -70,9 +70,11 @@ class TranslationScene extends React.Component {
           <Switch
             style={({flexDirection: 'row'}, {flex: 1}, {height: 50})}
             key={index}
-            onValueChange={value =>
-              this.setState({selectedGroup: languageGroup})
-            }
+            onValueChange={value => {
+              var array = this.state.selectedGroups;
+              array.splice(index, 0, languageGroup);
+              this.setState({selectedGroups: array});
+            }}
             value={languageGroup == this.state.selectedGroup}>
             <Text style={{left: 70}}>{languageGroup}</Text>
           </Switch>
