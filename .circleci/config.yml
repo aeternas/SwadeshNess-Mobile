@@ -107,7 +107,7 @@ aliases:
  
 version: 2
 jobs:
-  build:
+  node-packages:
     working_directory: ~/project
     docker:
       - image: circleci/node:8
@@ -130,7 +130,7 @@ jobs:
       - store_test_results:
           path: ~/project/junit.xml
  
-  ios:
+  build-ios:
     macos:
       xcode: "10.1.0"
     working_directory: ~/project
@@ -169,9 +169,9 @@ jobs:
  
 workflows:
   version: 2
-  node-ios:
+  test-build-deliver:
     jobs:
-      - build
-      - ios:
+      - node-packages
+      - build-ios:
           requires:
-            - build
+            - node-packages
