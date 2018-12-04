@@ -86,6 +86,7 @@ class TranslationScene extends React.Component {
   render() {
     return (
       <ScrollView>
+        <View style={{height: 16}} />
         <TextInput
           style={{height: 40}}
           textAlign="center"
