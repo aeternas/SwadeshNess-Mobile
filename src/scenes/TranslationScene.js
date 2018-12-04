@@ -72,10 +72,14 @@ class TranslationScene extends React.Component {
             key={index}
             onValueChange={value => {
               var array = this.state.selectedGroups;
-              array.splice(index, 0, languageGroup);
+              if (value == false) {
+                array = array.filter(el => el != languageGroup);
+              } else {
+                array.splice(index, 0, languageGroup);
+              }
               this.setState({selectedGroups: array});
             }}
-            value={languageGroup == this.state.selectedGroup}>
+            value={this.state.selectedGroups.includes(languageGroup)}>
             <Text style={{left: 70}}>{languageGroup}</Text>
           </Switch>
         );
