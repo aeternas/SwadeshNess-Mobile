@@ -1,0 +1,41 @@
+
+language: node_js
+node_js:
+  - "8.9.1"
+sudo: false
+cache:
+  directories:
+    - $HOME/.yarn-cache
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+script:
+  - cp env.example.js env.js
+  - npm run lint
+  - npm test
+  - npm run bundle:ios
+matrix:
+  include:
+    - language: objective-c
+      cache: 
+        - bundler
+        - cocoapods
+        - $HOME/.yarn-cache
+        - $HOME/.gradle/caches/
+        - $HOME/.gradle/wrapper/
+      os: osx
+      osx_image: xcode10
+      node_js: false
+      before_install:
+        - nvm install 8
+        - node --version
+        - travis_retry npm install -g yarn
+        - yarn -version
+      install:
+        - travis_retry gem install xcpretty
+        - travis_retry yarn
+      script:
+        - node ./node_modules/react-native-cli/index.js bundle --dev false --platform ios --entry-file ./index.js --bundle-output ./ios/main.jsbundle
+        - cd ios
+        - bundle install
+        - bundle exec pod install
+        - bundle exec fastlane test_build_only

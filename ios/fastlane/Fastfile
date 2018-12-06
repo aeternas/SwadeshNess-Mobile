@@ -1,0 +1,86 @@
+default_platform(:ios)
+
+def ci_setup_keychain
+  create_keychain(
+    name: ENV["MATCH_KEYCHAIN_NAME"],
+    password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    add_to_search_list: true
+  )
+
+  unlock_keychain(
+    path: ENV["MATCH_KEYCHAIN_NAME"],
+    add_to_search_list: :replace,
+    password: ENV['MATCH_KEYCHAIN_PASSWORD']
+  )
+end
+
+def setup_codesigning
+  match(
+      app_identifier: "jp.ivan.SwadeshNessMobile",
+      type: "appstore",
+      verbose: true
+    )
+end
+
+def build_sign
+  gym(
+    scheme: "SwadeshNessMobile",
+    clean: true,
+    export_method: "app-store"
+  )
+end
+
+def test
+  scan(
+    scheme: "SwadeshNessMobile"
+  )
+end
+
+def commit_bumped_version
+  sh("git add ./../SwadeshNessMobile.xcodeproj/project.pbxproj ./../SwadeshNessMobile/Info.plist ./../SwadeshNessMobileTests/Info.plist && git commit -m 'Version bump to #{get_build_number} [ci skip]'")
+end
+
+def push_bumped_version
+  sh("git push origin head:#{ENV['CUSTOM_PUSH_BRANCH']} --tags")
+end
+
+platform :ios do
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    ci_setup_keychain
+    increment_build_number(xcodeproj: "SwadeshNessMobile.xcodeproj")
+    commit_bumped_version
+    setup_codesigning
+    test
+    build_sign
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
+    push_bumped_version
+  end
+
+  desc "Test and build"
+  lane :buildtest do
+    ci_setup_keychain
+    setup_codesigning
+    test
+    build_sign
+  end  
+
+  desc "Just run tests"
+  lane :test_build_only do
+    scan(
+      scheme: "SwadeshNessMobile",
+      build_for_testing: true
+    )
+  end  
+
+  desc "Build locally"
+  lane :localbuild do
+    swadeshness_match
+    build_sign
+  end
+end

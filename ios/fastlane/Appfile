@@ -1,0 +1,5 @@
+app_identifier("jp.ivan.SwadeshNessMobile")
+apple_id(ENV["APPLE_ID"])
+
+itc_team_id("117495597")
+team_id("WZ27824WW9")
