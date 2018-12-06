@@ -2,7 +2,15 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {View, TextInput, Button, ScrollView, Text, Switch} from 'react-native';
+import {
+  View,
+  ActivityIndicator,
+  TextInput,
+  Button,
+  ScrollView,
+  Text,
+  Switch,
+} from 'react-native';
 import {TranslationService} from '../services/TranslationService.js';
 import {TranslationTableView} from '../components/views/TranslationTableView.js';
 import {RoundedButtonStack} from '../components/views/RoundedButtonStack.js';
@@ -63,7 +71,7 @@ class TranslationScene extends React.Component {
 
   renderGroups() {
     if (this.state.isLoading) {
-      return <View />;
+      return <ActivityIndicator />;
     } else {
       return this.state.groups.map((languageGroup, index, array) => {
         return (
@@ -89,8 +97,7 @@ class TranslationScene extends React.Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={{height: 16}} />
+      <ScrollView style={{keyboardDismissMode: 'on-drag'}}>
         <TextInput
           style={{height: 40}}
           textAlign="center"
@@ -102,6 +109,7 @@ class TranslationScene extends React.Component {
           onPress={() => this.translate(this.getTranslationRequest())}
         />
         <TranslationTableView
+          style={{keyboardDismissMode: 'on-drag'}}
           translationSections={this.state.translationResult}
         />
         {this.renderGroups()}
