@@ -5,7 +5,7 @@ class TranslationService {
     }, '');
     fetch(
       'https://' +
-        process.env['BASE_URL'] +
+        process.env['PROD_BASE_URL'] +
         '/v1/?translate=' +
         parameters.word +
         groupsQuery,
@@ -20,7 +20,7 @@ class TranslationService {
   }
 
   getGroups(cb) {
-    fetch('https://' + process.env['BASE_URL'] + '/v1/groups')
+    fetch('https://' + process.env['PROD_BASE_URL'] + '/v1/groups')
       .then(response => response.json())
       .then(responseJson => {
         cb(responseJson);
