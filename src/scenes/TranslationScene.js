@@ -22,7 +22,8 @@ class TranslationScene extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
+      isLoadingTranslation: false,
+      isLoadingGroups: true,
       textToTranslate: '',
       translationResult: [],
       groups: [],
@@ -38,7 +39,7 @@ class TranslationScene extends React.Component {
   getGroups() {
     this.service.getGroups(groupsResponse => {
       this.setState({
-        isLoading: false,
+        isLoadingGroups: false,
         groups: groupsResponse.map(group => {
           return group.name;
         }),
@@ -49,6 +50,7 @@ class TranslationScene extends React.Component {
   translate(parameters) {
     this.service.translate(parameters, cb => {
       this.setState({
+        isLoadingTranslation: false,
         translationResult: cb.map((value, index, array) => {
           return {
             title: value.name,
@@ -62,6 +64,7 @@ class TranslationScene extends React.Component {
   }
 
   getTranslationRequest() {
+    this.setState({isLoadingTranslation: true});
     var request = {
       word: this.state.textToTranslate,
       groups: this.state.selectedGroups,
@@ -70,7 +73,7 @@ class TranslationScene extends React.Component {
   }
 
   renderGroups() {
-    if (this.state.isLoading) {
+    if (this.state.isLoadingGroups) {
       return <ActivityIndicator />;
     } else {
       return this.state.groups.map((languageGroup, index, array) => {
@@ -95,6 +98,21 @@ class TranslationScene extends React.Component {
     }
   }
 
+  renderTranslation() {
+    if (this.state.isLoadingTranslation) {
+      return <ActivityIndicator />;
+    } else if (this.state.translationResult.length == false) {
+      return <View />;
+    } else {
+      return (
+        <TranslationTableView
+          style={{keyboardDismissMode: 'on-drag'}}
+          translationSections={this.state.translationResult}
+        />
+      );
+    }
+  }
+
   render() {
     return (
       <ScrollView style={{keyboardDismissMode: 'on-drag'}}>
@@ -108,10 +126,7 @@ class TranslationScene extends React.Component {
           title="Translate!"
           onPress={() => this.translate(this.getTranslationRequest())}
         />
-        <TranslationTableView
-          style={{keyboardDismissMode: 'on-drag'}}
-          translationSections={this.state.translationResult}
-        />
+        {this.renderTranslation()}
         {this.renderGroups()}
       </ScrollView>
     );
