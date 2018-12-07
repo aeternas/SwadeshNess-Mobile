@@ -1,13 +1,12 @@
 class TranslationService {
   translate(parameters, cb) {
-    let groupsQuery = parameters.groups.reduce(function(query, current) {
+    let groups = parameters.groups.reduce(function(query, current) {
       return query + '&group=' + current;
     }, '');
-    fetch(
-      `https://'${process.env['BASE_URL']}/v1/?translate=${
-        parameters.word
-      }${groupsQuery}`,
-    )
+    let fetchQuery = `https://${process.env['BASE_URL']}/v1/?translate=${
+      parameters.word
+    }${groupsQuery}`;
+    fetch(fetchQuery)
       .then(response => response.json())
       .then(responseJson => {
         cb(responseJson.results);
