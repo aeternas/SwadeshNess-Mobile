@@ -1,6 +1,7 @@
 //  Ivan Golikov 2018
 
-import React, {Component} from 'react';
+import React from 'react';
+import {Component} from 'react';
 import {Alert, NavigatorIOS, StyleSheet, Button, View} from 'react-native';
 import {LaunchScene} from './scenes/LaunchScene.js';
 
