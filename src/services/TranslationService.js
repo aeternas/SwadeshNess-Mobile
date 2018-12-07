@@ -5,7 +5,7 @@ class TranslationService {
     }, '');
     let fetchQuery = `https://${process.env['BASE_URL']}/v1/?translate=${
       parameters.word
-    }${groupsQuery}`;
+    }${groups}`;
     fetch(fetchQuery)
       .then(response => response.json())
       .then(responseJson => {
