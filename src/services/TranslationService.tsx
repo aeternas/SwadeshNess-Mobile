@@ -1,25 +1,8 @@
-export interface TranslationRequest {
-  groups: string[];
-  word: string;
-}
-export interface TranslationResult {
-  name: string;
-  results: LanguageTranslationResult[];
-}
-
-interface TotalResults {
-  results: TranslationResult[];
-}
-
-export interface LanguageTranslationResult {
-  name: string;
-  translation: string;
-}
-
-export interface LanguageGroup {
-  name: string;
-  languages: string[];
-}
+import {
+  TranslationRequest,
+  TotalResults,
+  LanguageGroup
+} from '../interfaces/models/TranslationTypes';
 
 class TranslationService {
   private async api<T>(url: string): Promise<T> {

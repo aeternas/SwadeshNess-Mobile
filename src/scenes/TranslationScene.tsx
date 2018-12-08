@@ -12,11 +12,11 @@ import {
   StyleSheet,
 } from 'react-native';
 import {
-  TranslationService,
   TranslationRequest,
   TranslationResult,
   LanguageTranslationResult,
-} from '../services/TranslationService';
+} from '../interfaces/models/TranslationTypes';
+import { TranslationService } from '../services/TranslationService'
 import {TranslationTableView} from '../components/views/TranslationTableView';
 
 interface Props {
