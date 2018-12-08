@@ -1,24 +1,24 @@
 export interface TranslationRequest {
-  groups: string[],
-  word: string
+  groups: string[];
+  word: string;
 }
 export interface TranslationResult {
-  name: string
-  results: LanguageTranslationResult[]
+  name: string;
+  results: LanguageTranslationResult[];
 }
 
 interface TotalResults {
-  results: TranslationResult[]
+  results: TranslationResult[];
 }
 
 export interface LanguageTranslationResult {
-  name: string,
-  translation: string
+  name: string;
+  translation: string;
 }
 
 export interface LanguageGroup {
-  name: string,
-  languages: string[]
+  name: string;
+  languages: string[];
 }
 
 class TranslationService {
@@ -37,11 +37,11 @@ class TranslationService {
     let fetchQuery = `https://${process.env['BASE_URL']}/v1/?translate=${
       request.word
     }${groups}`;
-    return this.api(fetchQuery)
+    return this.api(fetchQuery);
   }
 
   getGroups(): Promise<LanguageGroup[]> {
-   return this.api(`https://${process.env['BASE_URL']}/v1/groups`) 
+    return this.api(`https://${process.env['BASE_URL']}/v1/groups`);
   }
 }
 

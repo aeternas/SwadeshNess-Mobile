@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {AppRegistry, SectionList, StyleSheet, Text, View} from 'react-native';
 
 interface Props {
-  translationSections: any[]
+  translationSections: any[];
 }
 
 class TranslationTableView extends Component<Props> {

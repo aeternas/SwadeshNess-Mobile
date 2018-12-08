@@ -5,8 +5,8 @@ import {Alert, StyleSheet, Button, View, NavigatorIOS} from 'react-native';
 import {TranslationScene} from './TranslationScene';
 
 interface Props {
-  route: {title: string}
-  navigator: NavigatorIOS
+  route: {title: string};
+  navigator: NavigatorIOS;
 }
 
 export class LaunchScene extends React.Component<Props> {

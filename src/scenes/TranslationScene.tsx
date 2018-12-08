@@ -9,31 +9,36 @@ import {
   ScrollView,
   Text,
   Switch,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
-import {TranslationService, TranslationRequest, TranslationResult, LanguageTranslationResult} from '../services/TranslationService';
+import {
+  TranslationService,
+  TranslationRequest,
+  TranslationResult,
+  LanguageTranslationResult,
+} from '../services/TranslationService';
 import {TranslationTableView} from '../components/views/TranslationTableView';
 
 interface Props {
-  navigator: any
+  navigator: any;
 }
 
 interface Tran4ddslationResult {
-  name: string
-  translation: string
+  name: string;
+  translation: string;
 }
 
 interface State {
-  isLoadingTranslation: Boolean
-  isLoadingGroups: Boolean
-  textToTranslate: string
-  translationResult: any[]
-  groups:string[]
-  selectedGroups:string[]
+  isLoadingTranslation: Boolean;
+  isLoadingGroups: Boolean;
+  textToTranslate: string;
+  translationResult: any[];
+  groups: string[];
+  selectedGroups: string[];
 }
 
 class TranslationScene extends React.Component<Props, State> {
-  service: TranslationService
+  service: TranslationService;
 
   constructor(props: Props) {
     super(props);
@@ -53,28 +58,29 @@ class TranslationScene extends React.Component<Props, State> {
   }
 
   async getGroups() {
-    const groups = await this.service.getGroups()
+    const groups = await this.service.getGroups();
     this.setState({
       isLoadingGroups: false,
-      groups: groups.map((group) => {
-      return group.name;
+      groups: groups.map(group => {
+        return group.name;
       }),
     });
   }
 
-
   async translate(parameters: TranslationRequest) {
-    let translationResults = await this.service.translate(parameters)
+    let translationResults = await this.service.translate(parameters);
     this.setState({
       isLoadingTranslation: false,
-      translationResult: translationResults.results.map((value: TranslationResult) => {
-        return {
-          title: value.name,
-          data: value.results.map((result: LanguageTranslationResult) => {
-            return result.name + ' - ' + result.translation;
-          }),
-        };
-      }),
+      translationResult: translationResults.results.map(
+        (value: TranslationResult) => {
+          return {
+            title: value.name,
+            data: value.results.map((result: LanguageTranslationResult) => {
+              return result.name + ' - ' + result.translation;
+            }),
+          };
+        },
+      ),
     });
   }
 
@@ -93,9 +99,10 @@ class TranslationScene extends React.Component<Props, State> {
     } else {
       return this.state.groups.map((languageGroup, index) => {
         return (
-          <Switch style = {styles.switch}
+          <Switch
+            style={styles.switch}
             key={languageGroup}
-            onValueChange = {value => {
+            onValueChange={value => {
               var array = this.state.selectedGroups;
               if (value == false) {
                 array = array.filter(el => el != languageGroup);
@@ -147,14 +154,14 @@ class TranslationScene extends React.Component<Props, State> {
 
 export {TranslationScene};
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   switch: {
-     flexDirection: 'row',
-     flex: 1,
-     height: 40,
+    flexDirection: 'row',
+    flex: 1,
+    height: 40,
   },
   textInput: {
     height: 40,
-    textAlign: 'center'
-  }
-})
+    textAlign: 'center',
+  },
+});
