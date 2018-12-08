@@ -17,6 +17,7 @@
     "@types/react": "^16.7.13",
     "@types/react-native": "^0.57.15",
     "@types/react-test-renderer": "^16.0.3",
+    "babel-cli": "^6.26.0",
     "babel-jest": "23.6.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "eslint-config-airbnb": "^17.1.0",
