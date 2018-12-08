@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import {AppRegistry, SectionList, StyleSheet, Text, View} from 'react-native';
 
-class TranslationTableView extends Component {
-  constructor(props) {
+interface Props {
+  translationSections: any[];
+}
+
+class TranslationTableView extends Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
   render() {
@@ -14,7 +18,7 @@ class TranslationTableView extends Component {
           renderSectionHeader={({section}) => (
             <Text style={styles.sectionHeader}>{section.title}</Text>
           )}
-          keyExtractor={(item, index) => index}
+          keyExtractor={(item, index) => `${index}`}
         />
       </View>
     );

@@ -13,18 +13,39 @@
     "react-native-cli": "^2.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/react": "^16.7.13",
+    "@types/react-native": "^0.57.15",
+    "@types/react-test-renderer": "^16.0.3",
     "babel-jest": "23.6.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
-    "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.49.0",
-    "react-test-renderer": "16.6.0-alpha.8af6728"
+    "react-native-typescript-transformer": "^1.2.10",
+    "react-test-renderer": "16.6.0-alpha.8af6728",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/"
+    ],
+    "cacheDirectory": ".jest/cache"
   }
 }
