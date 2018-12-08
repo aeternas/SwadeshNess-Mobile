@@ -1,18 +1,16 @@
 //  Ivan Golikov 2018
 
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Alert, StyleSheet, Button, View} from 'react-native';
-import {TranslationScene} from '../scenes/TranslationScene.js';
+import {Alert, StyleSheet, Button, View, NavigatorIOS} from 'react-native';
+import {TranslationScene} from './TranslationScene';
 
-export class LaunchScene extends React.Component {
-  static propTypes = {
-    route: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    }),
-    navigator: PropTypes.object.isRequired,
-  };
-  constructor(props, context) {
+interface Props {
+  route: {title: string}
+  navigator: NavigatorIOS
+}
+
+export class LaunchScene extends React.Component<Props> {
+  constructor(props: Props, context: any) {
     super(props, context);
     this._onPressButton = this._onPressButton.bind(this);
   }

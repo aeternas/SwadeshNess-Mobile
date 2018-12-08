@@ -1,7 +1,6 @@
 // Ivan Golikov
 
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {
   View,
   ActivityIndicator,
@@ -10,15 +9,33 @@ import {
   ScrollView,
   Text,
   Switch,
+  StyleSheet
 } from 'react-native';
-import {TranslationService} from '../services/TranslationService.js';
-import {TranslationTableView} from '../components/views/TranslationTableView.js';
+import {TranslationService, TranslationRequest, TranslationResult, LanguageTranslationResult} from '../services/TranslationService';
+import {TranslationTableView} from '../components/views/TranslationTableView';
 
-class TranslationScene extends React.Component {
-  static propTypes = {
-    navigator: PropTypes.object.isRequired,
-  };
-  constructor(props) {
+interface Props {
+  navigator: any
+}
+
+interface Tran4ddslationResult {
+  name: string
+  translation: string
+}
+
+interface State {
+  isLoadingTranslation: Boolean
+  isLoadingGroups: Boolean
+  textToTranslate: string
+  translationResult: any[]
+  groups:string[]
+  selectedGroups:string[]
+}
+
+class TranslationScene extends React.Component<Props, State> {
+  service: TranslationService
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       isLoadingTranslation: false,
@@ -35,34 +52,33 @@ class TranslationScene extends React.Component {
     this.getGroups();
   }
 
-  getGroups() {
-    this.service.getGroups(groupsResponse => {
-      this.setState({
-        isLoadingGroups: false,
-        groups: groupsResponse.map(group => {
-          return group.name;
-        }),
-      });
+  async getGroups() {
+    const groups = await this.service.getGroups()
+    this.setState({
+      isLoadingGroups: false,
+      groups: groups.map((group) => {
+      return group.name;
+      }),
     });
   }
 
-  translate(parameters) {
-    this.service.translate(parameters, cb => {
-      this.setState({
-        isLoadingTranslation: false,
-        translationResult: cb.map((value, index, array) => {
-          return {
-            title: value.name,
-            data: value.results.map(result => {
-              return result.name + ' - ' + result.translation;
-            }),
-          };
-        }),
-      });
+
+  async translate(parameters: TranslationRequest) {
+    let translationResults = await this.service.translate(parameters)
+    this.setState({
+      isLoadingTranslation: false,
+      translationResult: translationResults.results.map((value: TranslationResult) => {
+        return {
+          title: value.name,
+          data: value.results.map((result: LanguageTranslationResult) => {
+            return result.name + ' - ' + result.translation;
+          }),
+        };
+      }),
     });
   }
 
-  getTranslationRequest() {
+  getTranslationRequest(): TranslationRequest {
     this.setState({isLoadingTranslation: true});
     var request = {
       word: this.state.textToTranslate,
@@ -75,12 +91,11 @@ class TranslationScene extends React.Component {
     if (this.state.isLoadingGroups) {
       return <ActivityIndicator />;
     } else {
-      return this.state.groups.map((languageGroup, index, array) => {
+      return this.state.groups.map((languageGroup, index) => {
         return (
-          <Switch
-            style={({flexDirection: 'row'}, {flex: 1}, {height: 50})}
-            key={index}
-            onValueChange={value => {
+          <Switch style = {styles.switch}
+            key={languageGroup}
+            onValueChange = {value => {
               var array = this.state.selectedGroups;
               if (value == false) {
                 array = array.filter(el => el != languageGroup);
@@ -100,12 +115,11 @@ class TranslationScene extends React.Component {
   renderTranslation() {
     if (this.state.isLoadingTranslation) {
       return <ActivityIndicator />;
-    } else if (this.state.translationResult.length == false) {
+    } else if (this.state.translationResult.length == 0) {
       return <View />;
     } else {
       return (
         <TranslationTableView
-          style={{keyboardDismissMode: 'on-drag'}}
           translationSections={this.state.translationResult}
         />
       );
@@ -114,10 +128,9 @@ class TranslationScene extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{keyboardDismissMode: 'on-drag'}}>
+      <ScrollView>
         <TextInput
-          style={{height: 40}}
-          textAlign="center"
+          style={styles.textInput}
           placeholder="Type here to translate!"
           onChangeText={text => this.setState({textToTranslate: text})}
         />
@@ -133,3 +146,15 @@ class TranslationScene extends React.Component {
 }
 
 export {TranslationScene};
+
+const styles = StyleSheet.create ({
+  switch: {
+     flexDirection: 'row',
+     flex: 1,
+     height: 40,
+  },
+  textInput: {
+    height: 40,
+    textAlign: 'center'
+  }
+})
