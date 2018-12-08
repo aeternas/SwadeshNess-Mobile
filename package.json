@@ -17,7 +17,6 @@
     "@types/react-native": "^0.57.18",
     "babel-jest": "23.6.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
-    "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
