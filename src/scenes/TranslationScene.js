@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import {TranslationService} from '../services/TranslationService.js';
 import {TranslationTableView} from '../components/views/TranslationTableView.js';
-import {RoundedButtonStack} from '../components/views/RoundedButtonStack.js';
 
 class TranslationScene extends React.Component {
   static propTypes = {
