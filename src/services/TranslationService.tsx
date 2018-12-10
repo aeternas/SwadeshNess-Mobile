@@ -1,7 +1,7 @@
 import {
   TranslationRequest,
   TotalResults,
-  LanguageGroup
+  LanguageGroup,
 } from '../interfaces/models/TranslationTypes';
 
 class TranslationService {
