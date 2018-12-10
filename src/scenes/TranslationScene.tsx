@@ -16,7 +16,7 @@ import {
   TranslationResult,
   LanguageTranslationResult,
 } from '../interfaces/models/TranslationTypes';
-import { TranslationService } from '../services/TranslationService'
+import {TranslationService} from '../services/TranslationService';
 import {TranslationTableView} from '../components/views/TranslationTableView';
 
 interface Props {
@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     height: 40,
+    width: 100,
   },
   textInput: {
     height: 40,
