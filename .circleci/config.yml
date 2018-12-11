@@ -2,9 +2,9 @@ aliases:
   - &set-envs
     name: Set-Envs
     command: |
+      export EXP_CMD=if [$CIRCLE_BRANCH=="master"] then 'export BASE_URL="$SW_PROD_BASE_URL"' else 'export PROD_BASE_URL="$SW_BASE_URL"' fi
       echo 'export CUSTOM_PUSH_BRANCH="$CIRCLE_BRANCH"' >> $BASH_ENV
-      echo 'export BASE_URL="$SW_BASE_URL"' >> $BASH_ENV
-      echo 'export PROD_BASE_URL="$SW_PROD_BASE_URL"' >> $BASH_ENV
+      echo $EXP_CMD >> $BASH_ENV
   - &checkout
     name: Checkout
     command: |
