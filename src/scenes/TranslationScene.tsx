@@ -146,6 +146,7 @@ class TranslationScene extends React.Component<Props, State> {
           onChangeText={text => this.setState({textToTranslate: text})}
         />
         <Button
+          style={styles.button}
           title="Translate!"
           onPress={() => this.translate(this.getTranslationRequest())}
         />
@@ -167,7 +168,11 @@ const styles = StyleSheet.create({
     width: 100,
   },
   textInput: {
+    marginTop: 20,
     height: 40,
     textAlign: 'center',
+  },
+  button: {
+    marginTop: 30,
   },
 });
