@@ -93,33 +93,37 @@ class TranslationScene extends React.Component<Props, State> {
     return request;
   }
 
-  renderGroups() {
+  _renderGroupSwitches = () => {
+    return this.state.groups.map((languageGroup, index) => {
+      return (
+        <Switch
+          style={styles.switch}
+          key={languageGroup}
+          onValueChange={value => {
+            var array = this.state.selectedGroups;
+            if (value == false) {
+              array = array.filter(el => el != languageGroup);
+            } else {
+              array.splice(index, 0, languageGroup);
+            }
+            this.setState({selectedGroups: array});
+          }}
+          value={this.state.selectedGroups.includes(languageGroup)}>
+          <Text style={{left: 70}}>{languageGroup}</Text>
+        </Switch>
+      );
+    });
+  };
+
+  _renderGroups = () => {
     if (this.state.isLoadingGroups) {
       return <ActivityIndicator />;
     } else {
-      return this.state.groups.map((languageGroup, index) => {
-        return (
-          <Switch
-            style={styles.switch}
-            key={languageGroup}
-            onValueChange={value => {
-              var array = this.state.selectedGroups;
-              if (value == false) {
-                array = array.filter(el => el != languageGroup);
-              } else {
-                array.splice(index, 0, languageGroup);
-              }
-              this.setState({selectedGroups: array});
-            }}
-            value={this.state.selectedGroups.includes(languageGroup)}>
-            <Text style={{left: 70}}>{languageGroup}</Text>
-          </Switch>
-        );
-      });
+      return this._renderGroupSwitches();
     }
-  }
+  };
 
-  renderTranslation() {
+  _renderTranslation = () => {
     if (this.state.isLoadingTranslation) {
       return <ActivityIndicator />;
     } else if (this.state.translationResult.length == 0) {
@@ -131,7 +135,7 @@ class TranslationScene extends React.Component<Props, State> {
         />
       );
     }
-  }
+  };
 
   render() {
     return (
@@ -142,11 +146,13 @@ class TranslationScene extends React.Component<Props, State> {
           onChangeText={text => this.setState({textToTranslate: text})}
         />
         <Button
+          buttonStyle={{marginTop: 20}}
           title="Translate!"
           onPress={() => this.translate(this.getTranslationRequest())}
         />
-        {this.renderTranslation()}
-        {this.renderGroups()}
+        {this._renderTranslation()}
+        {this._renderGroups()}
+        <View style={{height: 50}} />
       </ScrollView>
     );
   }
@@ -162,6 +168,7 @@ const styles = StyleSheet.create({
     width: 100,
   },
   textInput: {
+    marginTop: 20,
     height: 40,
     textAlign: 'center',
   },
