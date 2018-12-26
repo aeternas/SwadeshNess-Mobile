@@ -109,7 +109,7 @@ class TranslationScene extends React.Component<Props, State> {
             this.setState({selectedGroups: array});
           }}
           value={this.state.selectedGroups.includes(languageGroup)}>
-          <Text style={{left: 70}}>{languageGroup}</Text>
+          <Text style={styles.switchText}>{languageGroup}</Text>
         </Switch>
       );
     });
@@ -164,8 +164,13 @@ const styles = StyleSheet.create({
   switch: {
     flexDirection: 'row',
     flex: 1,
+    marginLeft: 15,
     height: 40,
     width: 100,
+  },
+  switchText: {
+    left: 70,
+    top: 5,
   },
   textInput: {
     marginTop: 20,
