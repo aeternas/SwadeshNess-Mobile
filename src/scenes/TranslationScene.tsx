@@ -137,6 +137,10 @@ class TranslationScene extends React.Component<Props, State> {
     }
   };
 
+  _selectDeselectGroups = () => {
+    return this.state.selectedGroups.length > 0 ? [] : this.state.groups;
+  };
+
   render() {
     return (
       <ScrollView>
@@ -154,7 +158,9 @@ class TranslationScene extends React.Component<Props, State> {
         {this._renderGroups()}
         <Button
           title="Select/Deselect all"
-          onPress={() => this.setState({selectedGroups: this.state.groups})}
+          onPress={() =>
+            this.setState({selectedGroups: this._selectDeselectGroups()})
+          }
         />
         <View style={{height: 50}} />
       </ScrollView>
