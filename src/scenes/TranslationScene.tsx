@@ -151,6 +151,7 @@ class TranslationScene extends React.Component<Props, State> {
         />
         <Button
           buttonStyle={{marginTop: 20}}
+          disabled={this.state.selectedGroups.length == 0}
           title="Translate!"
           onPress={() => this.translate(this.getTranslationRequest())}
         />
