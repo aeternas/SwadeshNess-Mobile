@@ -172,6 +172,10 @@ workflows:
   test-build-deliver:
     jobs:
       - node-packages
+          filters:
+            branches:
+              - master
+              - development
       - build-ios:
           requires:
             - node-packages
