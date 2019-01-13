@@ -174,8 +174,9 @@ workflows:
       - node-packages
           filters:
             branches:
-              - master
-              - development
+              only:
+                - master
+                - development
       - build-ios:
           requires:
             - node-packages
