@@ -27,7 +27,6 @@ aliases:
       - node_modules
       - ~/.cache/yarn
     key: yarn-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
- 
   - &restore-react-native-cli
     keys:
       - react-native-cli-{{ arch }}
@@ -35,7 +34,6 @@ aliases:
     paths:
       - node_modules
     key: react-native-cli-{{ arch }}
- 
   - &restore-fastlane
     keys:
       - fastlane-{{ arch }}
@@ -43,7 +41,6 @@ aliases:
     paths:
       - ~/.fastlane
     key: fastlane-{{ arch }}
- 
   - &restore-gem-ios
     keys:
       - gem-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Gemfile.lock" }}
@@ -55,7 +52,6 @@ aliases:
     paths:
       - ios/vendor/bundle
     key: gem-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Gemfile.lock" }}
- 
   - &restore-cocoapods
     keys:
       - cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
@@ -70,7 +66,6 @@ aliases:
     key: cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
  
  
-  # Dependency Management
   - &install-react-native-cli
     name: Install react-native-cli
     command: yarn add react-native-cli
