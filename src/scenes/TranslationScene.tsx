@@ -141,9 +141,20 @@ class TranslationScene extends React.Component<Props, State> {
     return this.state.selectedGroups.length > 0 ? [] : this.state.groups;
   };
 
+  _renderEnvLabel = () => {
+    let branchEnv = `${process.env['CUSTOM_PUSH_BRANCH']}`;
+    let envText = branchEnv == 'master' ? '' : branchEnv;
+    return (
+      <View style={styles.envLabel}>
+        <Text>{envText}</Text>
+      </View>
+    );
+  };
+
   render() {
     return (
       <ScrollView>
+        {this._renderEnvLabel()}
         <TextInput
           style={styles.textInput}
           placeholder="Type here to translate!"
@@ -187,5 +198,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     height: 40,
     textAlign: 'center',
+  },
+  envLabel: {
+    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    marginTop: 8,
+    marginRight: 8,
   },
 });
