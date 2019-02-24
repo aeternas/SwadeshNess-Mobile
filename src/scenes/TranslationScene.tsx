@@ -142,9 +142,11 @@ class TranslationScene extends React.Component<Props, State> {
   };
 
   _renderEnvLabel = () => {
+    let branchEnv = `${process.env['CUSTOM_PUSH_BRANCH']}`;
+    let envText = branchEnv == 'master' ? '' : branchEnv;
     return (
       <View style={styles.envLabel}>
-        <Text>Env is `${process.env['BASE_URL']}`</Text>
+        <Text>{envText}</Text>
       </View>
     );
   };
