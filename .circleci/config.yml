@@ -100,6 +100,20 @@ aliases:
       cd ios
       bundle exec pod install
  
+  - &create-main-jsbundle
+    name: Create a main.jsbundle
+    command: |
+      node ./node_modules/react-native-cli/index.js bundle \
+      --dev false --platform ios \
+      --entry-file ./index.js \
+      --bundle-output ./ios/main.jsbundle
+
+  - &build-and-sign-ios
+    name: Build and Signing
+    command: |
+      cd ios && \
+      bundle exec fastlane beta
+
 version: 2
 jobs:
   node-packages:
@@ -109,7 +123,6 @@ jobs:
  
     steps:
       - checkout
- 
       - restore-cache: *restore-yarn-cache
       - run: *yarn
       - save-cache: *save-yarn-cache
@@ -152,15 +165,9 @@ jobs:
       - run: *install-cocoapods
       - save-cache: *save-cocoapods
  
-      - run:
-          name: Create a main.jsbundle
-          command: node ./node_modules/react-native-cli/index.js bundle --dev false --platform ios --entry-file ./index.js --bundle-output ./ios/main.jsbundle
+      - run: *create-main-jsbundle
  
-      - run:
-          name: Build and Signing
-          command: |
-            cd ios
-            bundle exec fastlane beta
+      - run: *build-and-sign-ios
  
 workflows:
   version: 2
