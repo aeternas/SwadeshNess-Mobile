@@ -6,5 +6,5 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "fastlane"
 gem "json"
-gem 'cocoapods', '1.6.0.beta.2'
+gem 'cocoapods', '1.7.0.beta.2'
 gem "xcode-install"
