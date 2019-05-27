@@ -140,7 +140,7 @@ jobs:
  
   build-ios:
     macos:
-      xcode: "10.2.0"
+      xcode: "10.2.1"
     working_directory: ~/project
     environment:
       FL_OUTPUT_DIR: ~/project/output
