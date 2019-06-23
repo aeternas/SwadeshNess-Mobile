@@ -3,16 +3,9 @@ import {
   TotalResults,
   LanguageGroup,
 } from '../interfaces/models/TranslationTypes';
+import {ApiClient} from '../networking/ApiClient';
 
 class TranslationService {
-  private async api<T>(url: string): Promise<T> {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    return response.json();
-  }
-
   translate(request: TranslationRequest): Promise<TotalResults> {
     let groups = request.groups.reduce(function(query, current) {
       return query + '&group=' + current;
@@ -20,11 +13,11 @@ class TranslationService {
     let fetchQuery = `https://${process.env['BASE_URL']}/v1/?translate=${
       request.word
     }${groups}`;
-    return this.api(fetchQuery);
+    return ApiClient.getSharedInstance().api(fetchQuery);
   }
 
   getGroups(): Promise<LanguageGroup[]> {
-    return this.api(`https://${process.env['BASE_URL']}/v1/groups`);
+    return ApiClient.getSharedInstance().api(`https://${process.env['BASE_URL']}/v1/groups`);
   }
 }
 
