@@ -114,7 +114,7 @@ aliases:
       cd ios && \
       bundle exec fastlane beta
 
-version: 2
+version: 2.1
 jobs:
   node-packages:
     working_directory: ~/project
@@ -170,7 +170,7 @@ jobs:
       - run: *build-and-sign-ios
  
 workflows:
-  version: 2
+  version: 2.1
   test-build-deliver:
     jobs:
       - node-packages:
