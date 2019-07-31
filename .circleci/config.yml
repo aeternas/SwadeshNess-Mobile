@@ -114,18 +114,17 @@ aliases:
       cd ios && \
       bundle exec fastlane beta
 
-version: 2
+version: 2.1
 jobs:
   node-packages:
     working_directory: ~/project
     docker:
       - image: circleci/node:8
- 
     steps:
       - checkout
-      - restore-cache: *restore-yarn-cache
+      - restore_cache: *restore-yarn-cache
       - run: *yarn
-      - save-cache: *save-yarn-cache
+      - save_cache: *save-yarn-cache
  
         #      - run:
         # name: Run unit tests
@@ -137,7 +136,6 @@ jobs:
             - node_modules
       - store_test_results:
           path: ~/project/junit.xml
- 
   build-ios:
     macos:
       xcode: "10.2.1"
@@ -149,28 +147,27 @@ jobs:
       - run: *set-envs
       - run: *checkout
       
-      - restore-cache: *restore-react-native-cli
+      - restore_cache: *restore-react-native-cli
       - run: *install-react-native-cli
-      - save-cache: *save-react-native-cli
+      - save_cache: *save-react-native-cli
  
-      - restore-cache: *restore-yarn-cache
+      - restore_cache: *restore-yarn-cache
       - run: *yarn
-      - save-cache: *save-yarn-cache
+      - save_cache: *save-yarn-cache
  
-      - restore-cache: *restore-gem-ios
+      - restore_cache: *restore-gem-ios
       - run: *install-gem-ios
-      - save-cache: *save-gem-ios
+      - save_cache: *save-gem-ios
  
-      - restore-cache: *restore-cocoapods
+      - restore_cache: *restore-cocoapods
       - run: *install-cocoapods
-      - save-cache: *save-cocoapods
+      - save_cache: *save-cocoapods
  
       - run: *create-main-jsbundle
  
       - run: *build-and-sign-ios
- 
 workflows:
-  version: 2
+  version: 2.1
   test-build-deliver:
     jobs:
       - node-packages:
