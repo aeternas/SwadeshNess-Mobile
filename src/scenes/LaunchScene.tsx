@@ -22,14 +22,17 @@ export class LaunchScene extends React.Component<Props> {
     });
   }
 
+  _renderTranslationButton = () => {
+    return (
+      <Button onPress={this._onPressButton} title="Proceed to translation" />
+    );
+  };
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="Proceed to translation"
-          />
+          {this._renderTranslationButton()}
         </View>
       </View>
     );
