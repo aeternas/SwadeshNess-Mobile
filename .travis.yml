@@ -26,6 +26,8 @@ matrix:
       osx_image: xcode10
       node_js: false
       before_install:
+        - gem update --system
+        - gem install bundler
         - nvm install 8
         - node --version
         - travis_retry npm install -g yarn
