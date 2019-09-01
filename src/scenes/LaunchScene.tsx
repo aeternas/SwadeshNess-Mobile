@@ -12,20 +12,28 @@ interface Props {
 export class LaunchScene extends React.Component<Props> {
   constructor(props: Props, context: any) {
     super(props, context);
-    this._onPressButton = this._onPressButton.bind(this);
+    this._onPressTranslationButton = this._onPressTranslationButton.bind(this);
   }
 
-  _onPressButton() {
+  _onPressTranslationButton(): void {
     this.props.navigator.push({
       component: TranslationScene,
       title: 'Translation',
     });
   }
 
-  _renderTranslationButton = () => {
+  _renderButton = (title: string, handler: () => void): React.ReactElement => {
     return (
-      <Button onPress={this._onPressButton} title="Proceed to translation" />
+      <Button onPress={handler} title={title} />
     );
+  };
+
+  _renderTranslationButton = (): React.ReactElement => {
+    return this._renderButton("Proceed to translation", this._onPressTranslationButton);
+  };
+
+  _renderAddCachedWord = (): React.ReactElement => {
+    return this._renderButton("Add word to cache", () => {});
   };
 
   render() {
@@ -33,6 +41,7 @@ export class LaunchScene extends React.Component<Props> {
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
           {this._renderTranslationButton()}
+          {this._renderAddCachedWord()}
         </View>
       </View>
     );
