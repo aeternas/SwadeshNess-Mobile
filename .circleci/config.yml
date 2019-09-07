@@ -55,10 +55,12 @@ aliases:
   - &restore-cocoapods
     keys:
       - cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
+      # Fallback to any other branch
+      - cocoapods-{{ arch }}-master-{{ checksum "ios/Podfile.lock" }}
       # Fallback in case checksum fails
-      - cocoapods-{{ arch }}-{{ .Branch }}-
+      # - cocoapods-{{ arch }}-{{ .Branch }}-
       # Fallback in case this is a first-time run on a fork
-      - cocoapods-{{ arch }}-master-
+      # - cocoapods-{{ arch }}-master-
   - &save-cocoapods
     paths:
       - ~/.cocoapods
