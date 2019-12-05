@@ -11,8 +11,7 @@ aliases:
       echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config && \ 
       echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config && \
       git clone --depth=50 -b $CIRCLE_BRANCH $CIRCLE_REPOSITORY_URL ./ && \
-      git checkout $CIRCLE_SHA1 && \
-      git checkout -b deployment
+      git reset --hard $CIRCLE_SHA1
 
   # Cache Management
   - &restore-yarn-cache
