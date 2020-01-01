@@ -1,10 +1,3 @@
-module.exports = {
-  transformer: {
-    babelTransformerPath: require.resolve(
-      'react-native-typescript-transformer',
-    ),
-  },
-};
 module.exports = function(api) {
   const presets = ['module:metro-react-native-babel-preset'];
   const plugins = [

@@ -10,8 +10,9 @@ aliases:
       mkdir ~/.ssh/; \
       echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config && \ 
       echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config && \
-      git clone --depth=1 -b $CIRCLE_BRANCH $CIRCLE_REPOSITORY_URL ./ && \
-      git reset --hard $CIRCLE_SHA1
+      git clone --depth=50 -b $CIRCLE_BRANCH $CIRCLE_REPOSITORY_URL ./ && \
+      git checkout $CIRCLE_SHA1 && \
+      git checkout -b deployment
 
   # Cache Management
   - &restore-yarn-cache
@@ -54,12 +55,10 @@ aliases:
   - &restore-cocoapods
     keys:
       - cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
-      # Fallback to any other branch
-      - cocoapods-{{ arch }}-master-{{ checksum "ios/Podfile.lock" }}
       # Fallback in case checksum fails
-      # - cocoapods-{{ arch }}-{{ .Branch }}-
+      - cocoapods-{{ arch }}-{{ .Branch }}-
       # Fallback in case this is a first-time run on a fork
-      # - cocoapods-{{ arch }}-master-
+      - cocoapods-{{ arch }}-master-
   - &save-cocoapods
     paths:
       - ~/.cocoapods
