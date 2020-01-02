@@ -9,7 +9,7 @@
   "dependencies": {
     "asap": "^2.0.6",
     "react": "16.6.0-alpha.8af6728",
-    "react-native": "0.57.4",
+    "react-native": "https://github.com/aeternas/react-native.git#v0.57.41",
     "react-native-cli": "^2.0.1"
   },
   "devDependencies": {
