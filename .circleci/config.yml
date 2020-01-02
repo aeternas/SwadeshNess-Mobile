@@ -18,9 +18,9 @@ aliases:
     keys:
       - yarn-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
       # Fallback in case checksum fails
-      - yarn-{{ arch }}-{{ .Branch }}-
+      #- yarn-{{ arch }}-{{ .Branch }}-
       # Fallback in case this is a first-time run on a fork
-      - yarn-{{ arch }}-master-
+      #- yarn-{{ arch }}-master-
   - &save-yarn-cache
     paths:
       - node_modules
