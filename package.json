@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "asap": "^2.0.6",
+    "mem": "^4.0.0",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "https://github.com/aeternas/react-native.git#v0.57.41",
     "react-native-cli": "^2.0.1"
