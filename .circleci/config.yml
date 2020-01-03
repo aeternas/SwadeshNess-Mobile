@@ -161,9 +161,10 @@ jobs:
       - run: *install-gem-ios
       - save_cache: *save-gem-ios
  
-      - restore_cache: *restore-cocoapods
+      # disabled caching due to its size > 500 Mb
+      #- restore_cache: *restore-cocoapods
       - run: *install-cocoapods
-      - save_cache: *save-cocoapods
+      #- save_cache: *save-cocoapods
  
       - run: *create-main-jsbundle
  
