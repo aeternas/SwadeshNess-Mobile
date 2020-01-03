@@ -12,15 +12,9 @@ aliases:
       echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config && \
       git clone --depth=1 -b $CIRCLE_BRANCH $CIRCLE_REPOSITORY_URL ./ && \
       git reset --hard $CIRCLE_SHA1
-
-  # Cache Management
   - &restore-yarn-cache
     keys:
       - yarn-{{ arch }}-{{ .Branch }}-{{ checksum "package.json" }}
-      # Fallback in case checksum fails
-      #- yarn-{{ arch }}-{{ .Branch }}-
-      # Fallback in case this is a first-time run on a fork
-      #- yarn-{{ arch }}-master-
   - &save-yarn-cache
     paths:
       - node_modules
@@ -43,9 +37,7 @@ aliases:
   - &restore-gem-ios
     keys:
       - gem-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Gemfile.lock" }}
-      # Fallback in case checksum fails
       - gem-{{ arch }}-{{ .Branch }}-
-      # Fallback in case this is a first-time run on a fork
       - gem-{{ arch }}-master-
   - &save-gem-ios
     paths:
@@ -54,12 +46,7 @@ aliases:
   - &restore-cocoapods
     keys:
       - cocoapods-{{ arch }}-{{ .Branch }}-{{ checksum "ios/Podfile.lock" }}
-      # Fallback to any other branch
       - cocoapods-{{ arch }}-master-{{ checksum "ios/Podfile.lock" }}
-      # Fallback in case checksum fails
-      # - cocoapods-{{ arch }}-{{ .Branch }}-
-      # Fallback in case this is a first-time run on a fork
-      # - cocoapods-{{ arch }}-master-
   - &save-cocoapods
     paths:
       - ~/.cocoapods
@@ -85,7 +72,6 @@ aliases:
   - &yarn
     name: Install Node Dependencies
     command: |
-      # rm -rf node_modules
       yarn install --non-interactive --cache-folder ~/.cache/yarn
   
   - &install-gem-ios
@@ -100,7 +86,6 @@ aliases:
     command: |
       cd ios
       curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-      #bundle exec pod repo update && \
       bundle exec pod install
  
   - &create-main-jsbundle
@@ -163,9 +148,7 @@ jobs:
       - save_cache: *save-gem-ios
  
       # disabled caching due to its size > 500 Mb
-      #- restore_cache: *restore-cocoapods
       - run: *install-cocoapods
-      #- save_cache: *save-cocoapods
  
       - run: *create-main-jsbundle
  
