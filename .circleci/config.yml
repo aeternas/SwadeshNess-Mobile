@@ -99,7 +99,7 @@ aliases:
     name: Install CocoaPods
     command: |
       cd ios
-      bundle exec pod repo update && \
+      #bundle exec pod repo update && \
       bundle exec pod install
  
   - &create-main-jsbundle
@@ -168,6 +168,10 @@ jobs:
       - run: *create-main-jsbundle
  
       - run: *build-and-sign-ios
+
+# -------------------------
+#        WORK FLOWS
+# -------------------------
 workflows:
   version: 2.1
   test-build-deliver:
