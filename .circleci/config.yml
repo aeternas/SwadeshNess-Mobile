@@ -7,7 +7,7 @@ aliases:
   - &checkout
     name: Checkout
     command: |
-      mkdir ~/.ssh/; \
+      mkdir -p ~/.ssh/ && \
       echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config && \ 
       echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config && \
       git clone --depth=1 -b $CIRCLE_BRANCH $CIRCLE_REPOSITORY_URL ./ && \
